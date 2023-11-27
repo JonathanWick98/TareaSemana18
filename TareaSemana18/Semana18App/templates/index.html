@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido {{ user.username }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1a5276, #2c3e50);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4285f4;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: block;
+            margin: 10px;
+            padding: 15px 30px;
+            background-color: #4285f4;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0d47a1;
+        }
+
+        .logout {
+            margin-top: 20px;
+            background-color: #d32f2f; /* Rojo */
+        }
+
+        .logout:hover {
+            background-color: #b71c1c; /* Rojo más oscuro al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    {% if es_estudiante or es_admin %}
+        <h1>Bienvenido {{ user.username }} al área de Estudiantes</h1>
+
+        {% if es_admin %}
+            <!-- Botones para el administrador -->
+            <a href="{% url 'agregar_producto' %}">Agregar Producto</a>
+            <a href="{% url 'mostrar_productos' %}">Mostrar Productos</a>
+            <a href="{% url 'agregar_proveedor' %}">Agregar Proveedor</a>
+            <a href="{% url 'mostrar_proveedores' %}">Mostrar Proveedores</a>
+        {% endif %}
+
+    {% else %}
+        <h1>No tienes permisos para acceder a esta página</h1>
+    {% endif %}
+
+    <a href="{% url 'logout' %}" class="logout">Cerrar sesión</a>
+</body>
+</html>

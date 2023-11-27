@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1a5276, #2c3e50);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: ##4285f4;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco transparente */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        label {
+            color: white;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #4285f4; /* Azul de Google */
+            color: white;
+            padding: 8px 12px; /* Ajustado el tamaño */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px; /* Ajustada la fuente */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0d47a1; /* Azul más oscuro al pasar el mouse */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .back-button,
+        button[type="submit"] {
+            flex: 1;
+            padding: 8px 12px; /* Ajustado el tamaño */
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px; /* Ajustada la fuente */
+        }
+
+        .back-button {
+            background-color: #333;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post" action="{% url 'agregar_producto' %}">
+        {% csrf_token %}
+        <h1>Agregar Producto</h1>
+        {{ form.as_p }}
+        <div class="button-container">
+            <button type="submit">Agregar Producto</button>
+            <a href="javascript:history.back()" class="back-button">Regresar al menú</a>
+        </div>
+    </form>
+</body>
+
+</html>

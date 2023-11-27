@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Productos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1a5276, #2c3e50);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4285f4;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .product-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            background-color: #333;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <h1>Listado de Productos</h1>
+        <ul>
+            {% for producto in productos %}
+                <li class="product-item">{{ producto.nombre }} - Stock: {{ producto.stock }} - Proveedor: {{ producto.fk_prov }}</li>
+            {% endfor %}
+        </ul>
+        <div class="button-container">
+            <a href="javascript:history.back()" class="back-button">Regresar al menú</a>
+        </div>
+    </form>
+</body>
+
+</html>
